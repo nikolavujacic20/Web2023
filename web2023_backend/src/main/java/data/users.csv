@@ -1,0 +1,4 @@
+1,john_doe,secret123,johndoe@example.com,John,Doe,1990-05-15,MALE,User,/profile_pics/hello.jpg,true
+2,alice_smith,password123,alice@example.com,Alice,Smith,1985-09-20,FEMALE,User,/profile_pics/alice.jpg,false
+3,admin_user,adminpass,admin@example.com,Admin,User,1980-01-10,MALE,Admin,/profile_pics/admin.jpg,true
+4,admin_user,password123,test@example.com,Admin,User,1980-01-10,MALE,Admin,/profile_pics/admin.jpg,true
