@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "userType": "admin",
+    "username": "user1",
+    "password": "pass1",
+    "firstName": "Nikola",
+    "lastName": "Vujacic",
+    "gender": "Male",
+    "email": "nikolavujacic20@gmail.com",
+    "birthday": "19.04.1996",
+    "profilePicture": "/images/1.jpg",
+    "posts": [
+      101,
+      102
+    ]
+  },
+  {
+    "id": 2,
+    "userType": "regular",
+    "username": "user2",
+    "password": "pass2",
+    "firstName": "Marko",
+    "lastName": "Markovic",
+    "gender": "Male",
+    "birthday": "24.07.1998",
+    "email": "jankozmaj@gmail.com",
+    "profilePicture": "/images/1.jpg",
+    "posts": [
+      201,
+      202
+    ]
+  },
+  {
+    "id": 3,
+    "userType": "regular",
+    "username": "user3",
+    "password": "pass3",
+    "firstName": "Nikola",
+    "lastName": "Vujacic",
+    "gender": "Male",
+    "birthday": "19.04.1996",
+    "profilePicture": "/images/1.jpg",
+    "posts": [
+      301
+    ]
+  }
+]

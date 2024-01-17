@@ -5,7 +5,7 @@
       <h2 class="mb-4">Facebook</h2>
       <form @submit.prevent="login">
         <div class="form-group">
-          <input type="email" class="form-control" v-model="email" placeholder="Email" required />
+          <input type="username" class="form-control" v-model="username" placeholder="Username" required />
         </div>
         <div class="form-group">
           <input type="password" class="form-control" v-model="password" placeholder="Password" required />
@@ -18,34 +18,46 @@
 
 <script>
 import NavigationBar from '../components/NavigationBar.vue';
+import axios from 'axios';
 
-import { loginUser } from '../services/loginUser.js'
 export default {
   components: {
     NavigationBar,
   },
   data() {
     return {
-      email: '',
+      username: '',
       password: '',
     };
   },
   methods: {
     login() {
       const requestData = {
-        email: this.email,
+        username: this.username,
         password: this.password,
       };
 
-      loginUser(requestData)
-        .then((userData) => {
-        
-  
-          console.log('User data:', userData);
-          this.$router.push('/posts'); 
+      axios.post('http://localhost:3000/api/login', requestData)
+        .then((response) => {
+          const { success, user, message } = response.data;
+
+          if (success) {
+          
+
+            const userType = user.userType;
+            const username = user.username;
+            console.log('User Type:', userType);
+            
+            localStorage.setItem('username', username);
+            localStorage.setItem('userType', userType);
+            localStorage.setItem('userId',user.id);
+            this.$router.push('/posts');
+            this.$root.$emit('userLoggedIn', { isLogged: true, userType: user.userType });
+          } else {
+            console.error('Login failed:', message);
+          }
         })
         .catch((error) => {
-        
           console.error('Login failed or request error:', error);
         });
     },
@@ -81,12 +93,12 @@ export default {
 }
 
 .form-control {
-  width: 100%; /* Make the input fields take up the full width of the parent container */
-  padding: 12px; /* Adjusted padding for input fields */
+  width: 100%; 
+  padding: 12px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  box-sizing: border-box; /* Ensure padding and border are included in width */
+  box-sizing: border-box; 
 }
 
 .btn-primary {

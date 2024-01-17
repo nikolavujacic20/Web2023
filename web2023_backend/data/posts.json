@@ -1,0 +1,70 @@
+[
+  {
+    "postId": 101,
+    "userId": 1,
+    "picture": "/images/posts/2.jpg",
+    "text": "This is the content of post 1",
+    "comments": [
+      {
+        "commentId": 201,
+        "userId": 2,
+        "text": "Nice post!"
+      },
+      {
+        "commentId": 202,
+        "userId": 3,
+        "text": "I love it!"
+      }
+    ]
+  },
+  {
+    "postId": 102,
+    "userId": 1,
+    "picture": "/images/posts/1.jpg",
+    "text": "This is the content of post 2",
+    "comments": [
+      {
+        "commentId": 203,
+        "userId": 2,
+        "text": "Great picture!"
+      },
+      {
+        "commentId": 204,
+        "userId": 3,
+        "text": "Awesome!"
+      }
+    ]
+  },
+  {
+    "postId": 201,
+    "userId": 2,
+    "picture": "/images/posts/3.jpg",
+    "text": "User 2's first post",
+    "comments": [
+      {
+        "commentId": 205,
+        "userId": 1,
+        "text": "Amazing!"
+      }
+
+    ]
+  },
+  {
+    "postId": 202,
+    "userId": 2,
+    "picture": "/images/posts/2.jpg",
+    "text": "User 2's second post",
+    "comments": [
+     
+    ]
+  },
+  {
+    "postId": 301,
+    "userId": 3,
+    "picture": "/images/posts/1.jpg",
+    "text": "User 3's first post",
+    "comments": [
+     
+    ]
+  }
+]
