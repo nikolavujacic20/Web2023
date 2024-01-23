@@ -8,6 +8,7 @@ const postRoute = require('./routes/postRoute');
 const chatRoute = require('./routes/chatRoute');
 const usersRoute = require('./routes/usersRoute');
 const pictureRoute = require('./routes/pictureRoute');
+const messageRoute = require('./routes/messageRoute');
 
 const path = require('path');
 const cors = require('cors');
@@ -37,6 +38,7 @@ app.use('/posts', postRoute);
 app.use('/chat', chatRoute);
 app.use('/users', usersRoute);
 app.use('/pictures', pictureRoute);
+app.use('/messages', messageRoute);
 
 
 app.listen(port, () => {

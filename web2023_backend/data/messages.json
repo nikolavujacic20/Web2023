@@ -1,0 +1,4 @@
+[
+    { "id": 1, "senderId": "2", "receiverId": "3", "text": "Hello User 2!", "dateSent": "2023-01-01T09:00:00" },
+    { "id": 2, "senderId": "3", "receiverId": "2", "text": "Hi User 1!", "dateSent": "2023-01-01T09:05:00" }
+]

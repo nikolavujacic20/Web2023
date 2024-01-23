@@ -93,6 +93,8 @@ export default {
 
     async uploadProfilePicture(file) {
       
+      console.log(`/images/${file.name}`);
+      localStorage.setItem('image',`/images/${file.name}`);
       const formData = new FormData();
       formData.append('profilePicture', file);
       formData.append('username', this.username);

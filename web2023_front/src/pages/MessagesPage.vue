@@ -4,6 +4,7 @@
             <div class="chat">
                 <div v-for="message in messages" :key="message.id"
                     :class="{ 'message': true, 'mine': message.senderId === currentUserId }">
+                    <img :src="getUserImage(message.senderId)" class="message-avatar" />
                     <div class="message-content">{{ message.text }}</div>
                     <div class="message-timestamp">{{ formatDate(message.dateSent) }}</div>
                 </div>
@@ -19,6 +20,7 @@
   
 <script>
 import FriendsSideTab from '@/components/FriendsSideTab.vue';
+import axios from 'axios';
 export default {
     components: {
         FriendsSideTab
@@ -26,46 +28,62 @@ export default {
     },
     data() {
         return {
-            messages: [
-                { id: 1, senderId: '3', receiverId: '2', text: 'Hello from User 3!', dateSent: '2023-01-01T09:00:00' },
-                { id: 2, senderId: '2', receiverId: '3', text: 'Hi, User 3! This is User 2.', dateSent: '2023-01-01T09:05:00' },
-                // Additional mock messages can be added here
-            ],
+            messages: [],
             newMessage: '',
-            currentUserId: '2' // User 2 is logged in
+            currentUserId: '',
+            currentUserImage:'',
+            friendUserImage:''
         };
     },
     methods: {
 
-        loadMessages(friendId) {
-      // Logic to load messages with the selected friend
-      console.log("Selected friend ID:", friendId);
-      // You can use this friendId to fetch messages from your backend
-    },
+        getUserImage(senderId) {
+            // Assuming you have access to the current user's and the friend's image
+            return senderId === this.currentUserId ? `http://localhost:3000${this.currentUserImage}` : `http://localhost:3000${this.friendUserImage}`;
+        },
+
+        async loadMessages(friend) {
+
+            const currentUserId = localStorage.getItem('userId');
+            this.friendUserImage = friend.profilePicture;
+            try {
+                const response = await axios.get(`http://localhost:3000/messages/between/${currentUserId}/${friend.id}`);
+                this.messages = response.data.messages;
+                console.log(this.messages);
+            } catch (error) {
+                console.error('Error fetching messages:', error);
+            }
+        },
 
 
         sendMessage() {
             if (this.newMessage.trim() !== '') {
-                // Create a new message object
+
                 const newMessage = {
-                    id: this.messages.length + 1, // Simple way to generate a unique ID
+                    id: this.messages.length + 1,
                     senderId: this.currentUserId,
-                    receiverId: this.selectedUserId, // Assuming you have selectedUserId as a prop or data
+                    receiverId: this.selectedUserId,
                     text: this.newMessage,
-                    dateSent: new Date().toISOString() // Current date and time
+                    dateSent: new Date().toISOString()
                 };
 
-                // Add the new message to the messages array
+
                 this.messages.push(newMessage);
 
-                // Clear the input field
+
                 this.newMessage = '';
             }
         },
         formatDate(dateString) {
             const date = new Date(dateString);
-            return date.toLocaleTimeString(); // Format date as needed
+            return date.toLocaleTimeString();
         }
+    },
+    mounted() {
+        this.currentUserId = localStorage.getItem('userId');
+        this.currentUserImage = localStorage.getItem('image');
+        console.log(this.currentUserId);
+        console.log(this.currentUserImage);
     }
 };
 </script>
@@ -96,6 +114,8 @@ export default {
 }
 
 .message {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 8px;
@@ -104,17 +124,34 @@ export default {
 }
 
 .mine {
+    justify-content: flex-end;
     text-align: right;
 }
 
 .message-content {
     font-size: 14px;
     margin-bottom: 5px;
+    max-width: 80%; /* Prevents text from taking full width */
 }
 
 .message-timestamp {
     font-size: 12px;
     color: #606770;
+    margin-left: 10px;
+}
+
+.message-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.mine .message-avatar {
+    order: 2; /* Puts avatar on the right for the current user */
+    margin-right: 0;
+    margin-left: 10px;
 }
 
 .message-input {
@@ -144,4 +181,5 @@ export default {
 .message-input button:hover {
     background-color: #1654ba;
 }
+
 </style>

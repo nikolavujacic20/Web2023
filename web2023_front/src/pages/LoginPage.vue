@@ -51,6 +51,7 @@ export default {
             localStorage.setItem('username', username);
             localStorage.setItem('userType', userType);
             localStorage.setItem('userId',user.id);
+            localStorage.setItem('image',user.profilePicture);
             this.$router.push('/posts');
             this.$root.$emit('userLoggedIn', { isLogged: true, userType: user.userType });
           } else {
