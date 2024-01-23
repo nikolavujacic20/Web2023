@@ -5,6 +5,10 @@ const bodyParser = require('body-parser');
 const loginRoute = require('./routes/loginRoute');
 const profileRoute = require('./routes/profileRoute');
 const postRoute = require('./routes/postRoute');
+const chatRoute = require('./routes/chatRoute');
+const usersRoute = require('./routes/usersRoute');
+const pictureRoute = require('./routes/pictureRoute');
+
 const path = require('path');
 const cors = require('cors');
 
@@ -30,6 +34,9 @@ app.use(
 app.use('/api', loginRoute);
 app.use('/profile', profileRoute);
 app.use('/posts', postRoute);
+app.use('/chat', chatRoute);
+app.use('/users', usersRoute);
+app.use('/pictures', pictureRoute);
 
 
 app.listen(port, () => {

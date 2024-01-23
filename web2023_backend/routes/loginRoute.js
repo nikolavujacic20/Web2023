@@ -6,7 +6,7 @@ const fs = require('fs');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-const usersData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8'));
+
 
 const users = [
   { id: 1, username: 'user1@1', password: 'pass1' },
@@ -14,8 +14,9 @@ const users = [
 ];
 
 router.post('/login', (req, res) => {
+  const usersData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8'));
   const { username, password } = req.body;
-  const user = usersData.find((u) => u.username === username && u.password===password);
+  const user = usersData.find((u) => u.username === username && u.password === password);
 
   if (user) {
     req.session.user = user;
@@ -26,20 +27,23 @@ router.post('/login', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-  const { username, password } = req.body;
-
-  // Check if the username is already taken
+  const usersData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8'));
+  const { username, password, firstName, lastName, gender } = req.body;
+  userType = "regular";
+  profilePicture = "";
+  posts = [];
+  birthday = "";
   const isUsernameTaken = usersData.some((u) => u.username === username);
 
   if (isUsernameTaken) {
     res.status(400).json({ success: false, message: 'Username is already taken' });
   } else {
-    // Add the new user to the array or save it in your database
-    const newUser = { id: users.length + 1, username, password };
+
+    const newUser = { id: usersData.length + 1, userType, username, password, firstName, lastName, gender, birthday, profilePicture, posts };
     users.push(newUser);
     usersData.push(newUser);
 
-    // Save the updated user data to the file
+
     fs.writeFileSync('data/users.json', JSON.stringify(usersData, null, 2), 'utf-8');
 
     res.json({ success: true, message: 'Registration successful!' });

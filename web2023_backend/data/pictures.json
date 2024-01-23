@@ -1,0 +1,102 @@
+[
+  {
+    "userId": 1,
+    "pictures": [
+      {
+        "id": 101,
+        "filename": "1.jpg",
+        "load": true
+      },
+      {
+        "id": 102,
+        "filename": "1.jpg",
+        "load": true
+      }
+    ]
+  },
+  {
+    "userId": 2,
+    "pictures": [
+      {
+        "id": 201,
+        "filename": "2.jpg",
+        "load": true
+      },
+      {
+        "id": 202,
+        "filename": "1.jpg",
+        "load": false
+      },
+      {
+        "id": 203,
+        "filename": "1.jpg",
+        "load": false
+      },
+      {
+        "id": 204,
+        "filename": "1.jpg",
+        "load": true
+      },
+      {
+        "id": 1706043385402,
+        "filename": "1706043385378-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043422611,
+        "filename": "1706043422593-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043441161,
+        "filename": "1706043441141-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043613082,
+        "filename": "1706043613067-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043766555,
+        "filename": "1706043766542-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043783826,
+        "filename": "1706043783810-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706048642225,
+        "filename": "1706048642220-2.jpg",
+        "load": true
+      }
+    ]
+  },
+  {
+    "userId": 3,
+    "pictures": [
+      {
+        "id": 1706043804676,
+        "filename": "1706043804660-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043807932,
+        "filename": "1706043807918-re.jpg",
+        "load": true
+      },
+      {
+        "id": 1706043811338,
+        "filename": "1706043811322-re.jpg",
+        "load": false
+      },
+      {
+        "id": 1706043847357,
+        "filename": "1706043847351-1.jpg",
+        "load": true
+      }
+    ]
+  }
+]

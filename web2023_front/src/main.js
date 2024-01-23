@@ -8,5 +8,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   render: (h) => h(App),
-  router, // Use the Vue Router instance
+  router, 
 }).$mount('#app');

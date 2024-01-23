@@ -33,9 +33,13 @@
           <label>Email:</label>
           <input v-model="email" placeholder="Email" :disabled="true" />
         </div>
+        <div class="info-field">
+          <label for="profile-picture">Profile Picture:</label>
+          <input type="file" id="profile-picture" @change="handleFileUpload" />
+        </div>
       </div>
 
-      <!-- Password change -->
+
       <div class="password-section">
         <h2>Change Password</h2>
         <input type="password" v-model="oldPassword" placeholder="Old Password" />
@@ -43,10 +47,10 @@
         <input type="password" v-model="confirmPassword" placeholder="Confirm Password" />
       </div>
 
-      <!-- Save button -->
+
       <button @click="updateProfile" class="btn-save">Save Changes</button>
 
-      <!-- Error messages -->
+
       <p v-if="error" class="error-message">{{ error }}</p>
     </div>
   </div>
@@ -74,14 +78,44 @@ export default {
   },
   computed: {
     imageUrl() {
-      // Assume the backend serves images from the '/images' route
+
       return `http://localhost:3000${this.profilePicture}`;
     },
   },
   methods: {
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      console.log(file);
+      if (file) {
+        this.uploadProfilePicture(file);
+      }
+    },
+
+    async uploadProfilePicture(file) {
+      
+      const formData = new FormData();
+      formData.append('profilePicture', file);
+      formData.append('username', this.username);
+      try {
+        const response = await axios.post('http://localhost:3000/profile/upload-picture', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+
+       
+        if (response.data.success) {
+          this.profilePicture = response.data.path; 
+        }
+      } catch (error) {
+        console.error('Error uploading profile picture:', error);
+      }
+    },
+  
     async fetchUserData(username) {
       try {
 
+        console.log(username);
         const response = await axios.get(`http://localhost:3000/profile/${username}`);
         const { user } = response.data;
 
@@ -118,10 +152,10 @@ export default {
         const response = await axios.put('http://localhost:3000/profile/update-profile', requestData);
 
         if (response.data.success) {
-        
+
           console.log('Profile updated successfully');
         } else {
-    
+
           console.error('Profile update failed:', response.data.message);
         }
       } catch (error) {

@@ -97,10 +97,10 @@ export default {
         });
 
         console.log(response.data);
-        // Handle success, e.g., redirect to login page or show a success message
+      
       } catch (error) {
         console.error(error.response.data);
-        // Handle error, e.g., display error message to the user
+     
         this.registrationError = 'Registration failed. The username is already taken. Please try again.';
       }
     },

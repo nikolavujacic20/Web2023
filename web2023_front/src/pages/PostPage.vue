@@ -37,7 +37,8 @@ export default {
       if (commentText.trim() !== '') {
         const newComment = {
           text: commentText,
-          userId: localStorage.getItem('userId'), // Replace with the actual logged-in user ID
+          userId: localStorage.getItem('userId'), 
+          username: localStorage.getItem('username')
         };
 
         axios.post(`http://localhost:3000/posts/comment/${postId}`, newComment)
@@ -45,7 +46,7 @@ export default {
             const { success, message, post } = response.data;
 
             if (success) {
-              // Update the local state with the new comment
+           
               const index = this.posts.findIndex((p) => p.postId === postId);
               if (index !== -1) {
                 this.$set(this.posts, index, post);
@@ -60,7 +61,7 @@ export default {
             console.error('Error adding comment:', error);
           });
 
-        this.newCommentText[postId] = ''; // Clear the comment textarea
+        this.newCommentText[postId] = ''; 
       }
     },
     async fetchUserPosts(userId) {
@@ -94,26 +95,30 @@ export default {
 
 <style scoped>
 .post-page {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 600px; /* Reduced width for a more compact look */
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f5f6f7; /* Facebook's background color */
 }
 
 .post {
   border: 1px solid #ddd;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* White background for posts */
 }
 
 .post-image {
   max-width: 100%;
   height: auto;
+  border-radius: 5px; /* Rounded corners for images */
 }
 
 .comment-section {
-  margin-left: 20px;
-  background-color: #f0f2f5;
+  margin-top: 10px;
+  background-color: #e9ebee; /* Lighter background for comment section */
   border-radius: 5px;
   padding: 10px;
 }
@@ -123,27 +128,30 @@ export default {
   padding: 5px;
   border: 1px solid #eee;
   background-color: white;
+  border-radius: 4px; /* Rounded corners for comments */
 }
 
 .comment-text {
   font-size: 14px;
+  color: #1c1e21; /* Facebook's primary text color */
 }
 
 .comment-username {
   font-size: 12px;
+  color: #606770; /* Facebook's secondary text color */
 }
 
 .new-comment-input {
-  width: calc(100% - 20px);
+  width: 100%;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccd0d5; /* Facebook's border color */
   border-radius: 3px;
   font-size: 14px;
   margin-top: 10px;
 }
 
 .add-comment-btn {
-  background-color: #1877f2;
+  background-color: #1877f2; /* Facebook's button color */
   color: white;
   border: none;
   padding: 8px 16px;
@@ -154,6 +162,6 @@ export default {
 }
 
 .add-comment-btn:hover {
-  background-color: #166fe5;
+  background-color: #1654ba; /* Slightly darker blue on hover */
 }
 </style>

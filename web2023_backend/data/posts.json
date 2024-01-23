@@ -45,8 +45,17 @@
         "commentId": 205,
         "userId": 1,
         "text": "Amazing!"
+      },
+      {
+        "commentId": 1705776777039,
+        "text": "lmao",
+        "userId": "2"
+      },
+      {
+        "commentId": 1706044463733,
+        "text": "Nice\n",
+        "userId": "2"
       }
-
     ]
   },
   {
@@ -54,17 +63,13 @@
     "userId": 2,
     "picture": "/images/posts/2.jpg",
     "text": "User 2's second post",
-    "comments": [
-     
-    ]
+    "comments": []
   },
   {
     "postId": 301,
     "userId": 3,
     "picture": "/images/posts/1.jpg",
     "text": "User 3's first post",
-    "comments": [
-     
-    ]
+    "comments": []
   }
 ]

@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 
 const postsData = JSON.parse(fs.readFileSync('data/posts.json', 'utf-8'));
 
-// GET /posts/all?userId=:userId
+
 router.get('/all', (req, res) => {
     const userId = parseInt(req.query.userId);
 
@@ -24,7 +24,6 @@ router.get('/all', (req, res) => {
     }
 });
 
-// POST /posts/comment/:postId
 router.post('/comment/:postId', (req, res) => {
     const postId = parseInt(req.params.postId, 10);
     const { text, userId } = req.body;

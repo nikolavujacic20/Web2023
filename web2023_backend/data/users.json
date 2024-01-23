@@ -23,13 +23,14 @@
     "firstName": "Marko",
     "lastName": "Markovic",
     "gender": "Male",
-    "birthday": "24.07.1998",
+    "birthday": "24.07.2000",
     "email": "jankozmaj@gmail.com",
     "profilePicture": "/images/1.jpg",
     "posts": [
       201,
       202
-    ]
+    ],
+    "friends":[3,4]
   },
   {
     "id": 3,
@@ -44,5 +45,65 @@
     "posts": [
       301
     ]
+  },
+  {
+    "id": 4,
+    "userType": "regular",
+    "username": "b",
+    "password": "b",
+    "firstName": "Sima",
+    "lastName": "Simic",
+    "gender": "male",
+    "birthday": "",
+    "profilePicture": "/images/2.jpg",
+    "posts": []
+  },
+  {
+    "id": 5,
+    "userType": "regular",
+    "username": "bb",
+    "password": "b",
+    "firstName": "bb",
+    "lastName": "b",
+    "gender": "male",
+    "birthday": "",
+    "profilePicture": "",
+    "posts": []
+  },
+  {
+    "id": 6,
+    "userType": "regular",
+    "username": "bbb",
+    "password": "b",
+    "firstName": "bb",
+    "lastName": "b",
+    "gender": "male",
+    "birthday": "",
+    "profilePicture": "",
+    "posts": []
+  },
+  {
+    "id": 7,
+    "userType": "regular",
+    "username": "sss",
+    "password": "s",
+    "firstName": "s",
+    "lastName": "s",
+    "gender": "female",
+    "birthday": "",
+    "profilePicture": "",
+    "posts": []
+  },
+  {
+    "id": 8,
+    "userType": "regular",
+    "username": "ssss",
+    "password": "s",
+    "firstName": "s",
+    "lastName": "s",
+    "gender": "female",
+    "birthday": "",
+    "profilePicture": "",
+    "posts": []
   }
 ]
