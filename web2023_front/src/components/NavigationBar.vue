@@ -12,6 +12,9 @@
         <li class="nav-item" v-if="isLogged && userType === 'regular'">
           <router-link to="/pictures" class="nav-link">Pictures</router-link>
         </li>
+        <li class="nav-item" v-if="isLogged && userType === 'regular'">
+          <router-link to="/friends" class="nav-link">Friends</router-link>
+        </li>
 
         <li class="nav-item" v-if="isLogged && userType === 'regular'">
           <router-link to="/posts" class="nav-link">MyPosts</router-link>

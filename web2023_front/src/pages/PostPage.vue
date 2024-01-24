@@ -1,5 +1,7 @@
 <template>
   <div class="post-page" v-if="isLogged">
+
+    
     <div v-for="post in posts" :key="post.postId" class="post">
       <p>{{ post.text }}</p>
       <img :src="getImageUrl(post.picture)" alt="Post Image" class="post-image" />

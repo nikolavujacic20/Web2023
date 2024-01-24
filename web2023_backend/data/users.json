@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "userType": "admin",
+    "userType": "regular",
     "username": "user1",
     "password": "pass1",
     "firstName": "Nikola",
@@ -18,8 +18,26 @@
       3,
       4,
       2,
-      5,
-      6
+      6,
+      5
+    ],
+    "requests": [
+      {
+        "requestId": 5,
+        "status": "accepted"
+      },
+      {
+        "requestId": 6,
+        "status": "accepted"
+      },
+      {
+        "requestId": 9,
+        "status": "rejected"
+      },
+      {
+        "requestId": 7,
+        "status": "declined"
+      }
     ]
   },
   {
@@ -91,7 +109,8 @@
     "friends": [
       3,
       4,
-      2,1
+      2,
+      1
     ]
   },
   {
@@ -112,6 +131,24 @@
       2,
       5
     ]
+  },
+  {
+    "id": 7,
+    "userType": "regular",
+    "username": "user7",
+    "password": "pass7",
+    "firstName": "Jova",
+    "lastName": "Jovic",
+    "gender": "female",
+    "birthday": "14.08.1999.",
+    "profilePicture": "/images/6.jpg",
+    "posts": [],
+    "friends": [
+      3,
+      4,
+      1,
+      2,
+      5
+    ]
   }
-
 ]

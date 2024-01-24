@@ -10,6 +10,7 @@ import LoginPage from './pages/LoginPage.vue';
 import UsersPage from './pages/UsersPage.vue';
 import PicturesPage from './pages/PicturesPage.vue';
 import MessagesPage from './pages/MessagesPage.vue';
+import FriendsPage from './pages/FriendsPage.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,6 +22,7 @@ const routes = [
   { path: '/users', component: UsersPage },
   { path: '/pictures', component: PicturesPage },
   { path: '/messages', component: MessagesPage },
+  { path: '/friends', component: FriendsPage },
 ];
 
 const router = new VueRouter({
