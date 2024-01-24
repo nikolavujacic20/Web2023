@@ -31,14 +31,15 @@ export default {
             messages: [],
             newMessage: '',
             currentUserId: '',
-            currentUserImage:'',
-            friendUserImage:''
+            currentUserImage: '',
+            friendUserImage: '',
+            selectedUserId:''
         };
     },
     methods: {
 
         getUserImage(senderId) {
-            // Assuming you have access to the current user's and the friend's image
+
             return senderId === this.currentUserId ? `http://localhost:3000${this.currentUserImage}` : `http://localhost:3000${this.friendUserImage}`;
         },
 
@@ -46,10 +47,12 @@ export default {
 
             const currentUserId = localStorage.getItem('userId');
             this.friendUserImage = friend.profilePicture;
+            this.selectedUserId = friend.id;
             try {
                 const response = await axios.get(`http://localhost:3000/messages/between/${currentUserId}/${friend.id}`);
                 this.messages = response.data.messages;
-                console.log(this.messages);
+
+
             } catch (error) {
                 console.error('Error fetching messages:', error);
             }
@@ -58,7 +61,6 @@ export default {
 
         sendMessage() {
             if (this.newMessage.trim() !== '') {
-
                 const newMessage = {
                     id: this.messages.length + 1,
                     senderId: this.currentUserId,
@@ -67,9 +69,19 @@ export default {
                     dateSent: new Date().toISOString()
                 };
 
-
-                this.messages.push(newMessage);
-
+              
+                axios.post('http://localhost:3000/messages/add', newMessage)
+                    .then(response => {
+                        if (response.data.success) {
+                            this.messages.push(newMessage);
+                          
+                        } else {
+                            console.error('Error sending message:', response.data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error sending message:', error);
+                    });
 
                 this.newMessage = '';
             }
@@ -82,8 +94,7 @@ export default {
     mounted() {
         this.currentUserId = localStorage.getItem('userId');
         this.currentUserImage = localStorage.getItem('image');
-        console.log(this.currentUserId);
-        console.log(this.currentUserImage);
+
     }
 };
 </script>
@@ -131,7 +142,8 @@ export default {
 .message-content {
     font-size: 14px;
     margin-bottom: 5px;
-    max-width: 80%; /* Prevents text from taking full width */
+    max-width: 80%;
+    /* Prevents text from taking full width */
 }
 
 .message-timestamp {
@@ -149,7 +161,8 @@ export default {
 }
 
 .mine .message-avatar {
-    order: 2; /* Puts avatar on the right for the current user */
+    order: 2;
+    /* Puts avatar on the right for the current user */
     margin-right: 0;
     margin-left: 10px;
 }
@@ -181,5 +194,4 @@ export default {
 .message-input button:hover {
     background-color: #1654ba;
 }
-
 </style>

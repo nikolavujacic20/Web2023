@@ -52,7 +52,7 @@ export default {
                 this.$set(this.posts, index, post);
               }
 
-              console.log(message);
+           
             } else {
               console.error(message);
             }
@@ -70,7 +70,7 @@ export default {
         const { success, posts } = response.data;
 
         if (success) {
-          console.log('User Posts:', posts);
+         
           this.posts = posts;
         } else {
           console.error('Error fetching user posts:', response.data.message);

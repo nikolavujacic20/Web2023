@@ -46,7 +46,8 @@ export default {
 
             const userType = user.userType;
             const username = user.username;
-            console.log('User Type:', userType);
+
+           
             
             localStorage.setItem('username', username);
             localStorage.setItem('userType', userType);

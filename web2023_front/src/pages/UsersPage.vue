@@ -84,9 +84,10 @@ export default {
     fetchUsers() {
       axios.get('http://localhost:3000/users/all')
         .then(response => {
-          console.log(response.data); 
+         
+
           this.users = response.data.users;
-          console.log(this.users[0]);
+         
         })
         .catch(error => {
           console.error('Error fetching users:', error);

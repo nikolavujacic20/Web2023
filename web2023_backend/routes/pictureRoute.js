@@ -28,15 +28,14 @@ router.get('/:userId', (req, res) => {
 router.put('/edit-picture/:userId', (req, res) => {
     const userId = parseInt(req.params.userId);
     const { pictureId } = req.body;
-    console.log(userId);
-    console.log(pictureId);
+   
     const picturesData = JSON.parse(fs.readFileSync('data/pictures.json', 'utf-8'));
 
     const user = picturesData.find(u => u.userId === userId);
     if (user) {
         const picture = user.pictures.find(p => p.id === pictureId);
         if (picture) {
-            picture.load = false; // Set 'load' to false
+            picture.load = false; 
             fs.writeFileSync('data/pictures.json', JSON.stringify(picturesData, null, 2));
             res.json({ success: true, message: 'Picture updated successfully' });
         } else {
@@ -49,7 +48,7 @@ router.put('/edit-picture/:userId', (req, res) => {
 
 
 
-// Multer setup for image upload
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'images/');
@@ -63,10 +62,10 @@ const upload = multer({ storage: storage });
 
 router.post('/upload-picture', upload.single('image'), (req, res) => {
     if (req.file) {
-        const userId = parseInt(req.body.userId); // Assuming userId is sent as a form field
+        const userId = parseInt(req.body.userId); 
         const picturesData = JSON.parse(fs.readFileSync('data/pictures.json', 'utf-8'));
 
-        // Find user's gallery entry by userId
+      
         let userGallery = picturesData.find(entry => entry.userId === userId);
         if (userGallery) {
             userGallery.pictures.push({
@@ -75,7 +74,7 @@ router.post('/upload-picture', upload.single('image'), (req, res) => {
                 load: true
             });
         } else {
-            // Create new gallery entry for this user
+            
             userGallery = {
                 userId: userId,
                 pictures: [{
@@ -87,7 +86,7 @@ router.post('/upload-picture', upload.single('image'), (req, res) => {
             picturesData.push(userGallery);
         }
 
-        // Write updated data back to the file
+
         fs.writeFileSync('data/pictures.json', JSON.stringify(picturesData, null, 2));
 
         res.json({ success: true, message: 'Picture uploaded successfully', filename: req.file.filename });

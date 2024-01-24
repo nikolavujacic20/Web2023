@@ -8,11 +8,18 @@
     "lastName": "Vujacic",
     "gender": "Male",
     "email": "nikolavujacic20@gmail.com",
-    "birthday": "19.04.1996",
+    "birthday": "19.04.1996.",
     "profilePicture": "/images/1.jpg",
     "posts": [
       101,
       102
+    ],
+    "friends": [
+      3,
+      4,
+      2,
+      5,
+      6
     ]
   },
   {
@@ -23,9 +30,9 @@
     "firstName": "Marko",
     "lastName": "Markovic",
     "gender": "Male",
-    "birthday": "24.07.2000",
+    "birthday": "24.07.2000.",
     "email": "jankozmaj@gmail.com",
-    "profilePicture": "/images/1706053291068.jpg",
+    "profilePicture": "/images/2.jpg",
     "posts": [
       201,
       202
@@ -40,73 +47,71 @@
     "userType": "regular",
     "username": "user3",
     "password": "pass3",
-    "firstName": "Nikola",
-    "lastName": "Vujacic",
+    "firstName": "Janko",
+    "lastName": "Jankovic",
     "gender": "Male",
-    "birthday": "19.04.1996",
-    "profilePicture": "/images/1.jpg",
+    "birthday": "13.03.1996.",
+    "profilePicture": "/images/3.jpg",
     "posts": [
       301
+    ],
+    "friends": [
+      1,
+      2,
+      3
     ]
   },
   {
     "id": 4,
     "userType": "regular",
-    "username": "b",
-    "password": "b",
+    "username": "user4",
+    "password": "pass4",
     "firstName": "Sima",
     "lastName": "Simic",
     "gender": "male",
-    "birthday": "",
-    "profilePicture": "/images/2.jpg",
-    "posts": []
+    "birthday": "21.06.1997",
+    "profilePicture": "/images/4.jpg",
+    "posts": [],
+    "friends": [
+      2,
+      3
+    ]
   },
   {
     "id": 5,
     "userType": "regular",
-    "username": "bb",
-    "password": "b",
-    "firstName": "bb",
-    "lastName": "b",
-    "gender": "male",
-    "birthday": "",
-    "profilePicture": "",
-    "posts": []
+    "username": "user5",
+    "password": "pass5",
+    "firstName": "Jovana",
+    "lastName": "Jovanovic",
+    "gender": "female",
+    "birthday": "11.11.1995.",
+    "profilePicture": "/images/5.jpg",
+    "posts": [],
+    "friends": [
+      3,
+      4,
+      2,1
+    ]
   },
   {
     "id": 6,
     "userType": "regular",
-    "username": "bbb",
-    "password": "b",
-    "firstName": "bb",
-    "lastName": "b",
-    "gender": "male",
-    "birthday": "",
-    "profilePicture": "",
-    "posts": []
-  },
-  {
-    "id": 7,
-    "userType": "regular",
-    "username": "sss",
-    "password": "s",
-    "firstName": "s",
-    "lastName": "s",
+    "username": "user6",
+    "password": "pass6",
+    "firstName": "Jelena",
+    "lastName": "Jelenovic",
     "gender": "female",
-    "birthday": "",
-    "profilePicture": "",
-    "posts": []
-  },
-  {
-    "id": 8,
-    "userType": "regular",
-    "username": "ssss",
-    "password": "s",
-    "firstName": "s",
-    "lastName": "s",
-    "gender": "female",
-    "birthday": "",
-    "profilePicture": "",
-    "posts": []
+    "birthday": "14.08.1999.",
+    "profilePicture": "/images/6.jpg",
+    "posts": [],
+    "friends": [
+      3,
+      4,
+      1,
+      2,
+      5
+    ]
   }
+
 ]

@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         getImageUrl(filename) {
-            console.log(filename);
+           
             return `http://localhost:3000/images/${filename}`;
         },
         fetchPictures() {
@@ -38,7 +38,7 @@ export default {
             axios.get(`http://localhost:3000/pictures/${this.userId}`)
                 .then(response => {
                     this.pictures = response.data.pictures;
-                    console.log(this.pictures);
+                  
                 })
                 .catch(error => console.error('Error fetching pictures:', error));
         },
@@ -51,7 +51,7 @@ export default {
             axios.put(`http://localhost:3000/pictures/edit-picture/${this.userId}`, { pictureId })
                 .then(response => {
                     if (response.data.success) {
-                        console.log("RADIIII");
+                     
                         this.fetchPictures();
                     }
                 })
@@ -84,8 +84,7 @@ export default {
     },
     created() {
 
-        this.userId = localStorage.getItem('userId');
-        console.log(this.userId); 
+        this.userId = localStorage.getItem('userId'); 
         this.fetchPictures();
 
 

@@ -39,12 +39,12 @@ export default {
                 const userId = localStorage.getItem('userId');
                 const response = await axios.get(`http://localhost:3000/users/friends/${userId}`);
                 const friendIds = response.data.friendIds;
-                console.log(friendIds);
+               
 
                 for (const id of friendIds) {
                     const friendResponse = await axios.get(`http://localhost:3000/users/user/${id}`);
                     const friend = friendResponse.data.user;
-                    console.log(friend);
+              
                     this.contacts.push(friend);
                 }
             } catch (error) {
