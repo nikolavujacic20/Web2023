@@ -24,6 +24,7 @@
 </template>
 <script>
 import axios from 'axios';
+import { EventBus } from '@/components/EventBus.js';
 
 export default {
     data() {
@@ -32,7 +33,13 @@ export default {
             friends: []
         };
     },
+    created() {
+        EventBus.$on('friendRequestSent', this.fetchFriendRequests);
+    },
     methods: {
+        beforeDestroy() {
+            EventBus.$off('updateFriendRequests', this.fetchFriendRequests);
+        },
         async fetchFriends() {
             try {
                 const userId = localStorage.getItem('userId');

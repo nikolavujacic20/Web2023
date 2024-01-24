@@ -72,7 +72,7 @@ router.get("/friend-requests/:userId", (req, res) => {
   if (user && user.requests) {
     
       const pendingRequests = user.requests.filter(request => request.status === "pending");
-      console.log(pendingRequests);
+      console.log(pendingRequests+"OVO SU PENDING");
 
     
       const requests = pendingRequests.map(request => {
@@ -80,6 +80,7 @@ router.get("/friend-requests/:userId", (req, res) => {
       });
 
       console.log(requests);
+      console.log("IZNAD SU USERI KOJI SU PENDING");
       res.json({ success: true, requests });
   } else {
       res.status(404).json({ success: false, message: "User or requests not found" });
@@ -134,6 +135,38 @@ router.post("/decline-request", (req, res) => {
     fs.writeFileSync("data/users.json", JSON.stringify(usersData, null, 2), 'utf-8');
     res.json({ success: true, message: "Friend request declined" });
   } else {
+    res.status(404).json({ success: false, message: "User not found" });
+  }
+});
+
+
+
+// POST route to send a friend request
+router.post("/send-request", (req, res) => {
+  const { userId, friendId } = req.body; // `userId` is the sender, `friendId` is the receiver
+  const usersData = JSON.parse(fs.readFileSync("data/users.json", "utf-8"));
+
+  const user = usersData.find(u => u.id === parseInt(friendId));
+
+  if (user) {
+    // Check if the request already exists
+    const existingRequest = user.requests.find(req => req.requesterId === userId);
+    if (!existingRequest) {
+      // Add new request
+      user.requests.push({
+        requestId: parseInt(userId),
+        status: 'pending' // Status is 'pending' initially
+      });
+
+      // Save the updated data
+      fs.writeFileSync("data/users.json", JSON.stringify(usersData, null, 2), 'utf-8');
+      res.json({ success: true, message: "Friend request sent successfully" });
+    } else {
+      // Request already exists
+      res.json({ success: false, message: "Friend request already exists" });
+    }
+  } else {
+    // User not found
     res.status(404).json({ success: false, message: "User not found" });
   }
 });

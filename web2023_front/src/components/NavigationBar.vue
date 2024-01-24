@@ -1,8 +1,7 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <router-link v-if="!isLogged" to="/login" class="navbar-brand">Facebook</router-link>
-      <router-link v-else to="/posts" class="navbar-brand">Facebook</router-link>
+      <router-link :to="isLogged ? '/allposts' : '/login'" class="navbar-brand">Facebook</router-link>
       <ul class="nav">
 
 

@@ -23,6 +23,8 @@
 </template>
   
 <script>
+import axios from 'axios';
+import {EventBus} from '@/components/EventBus.js';
 export default {
     props: {
         selectedUser: {
@@ -41,11 +43,30 @@ export default {
         closeModal() {
             this.$emit('close');
         },
-        sendFriendRequest() {
-          
-            alert(`Friend request sent to ${this.selectedUser.firstName} ${this.selectedUser.lastName}!`);
-            this.closeModal();
-        },
+        async sendFriendRequest() {
+        try {
+            const userId = localStorage.getItem('userId'); // The ID of the current logged-in user
+            const friendId = this.selectedUser.id; // The ID of the user to send the request to
+
+            // POST request to the backend
+            const response = await axios.post('http://localhost:3000/users/send-request', {
+                userId: userId,
+                friendId: friendId
+            });
+
+            if (response.data.success) {
+                alert(`Friend request sent to ${this.selectedUser.firstName} ${this.selectedUser.lastName}!`);
+                this.closeModal();
+                EventBus.$emit('friendRequestSent');
+            } else {
+                // Handle the case where the friend request couldn't be sent
+                alert('Failed to send friend request.');
+            }
+        } catch (error) {
+            console.error('Error sending friend request:', error);
+            alert('An error occurred while sending the friend request.');
+        }
+    },
         cancelFriendRequest() {
            
             alert(`Friend request cancelled for ${this.selectedUser.firstName} ${this.selectedUser.lastName}.`);

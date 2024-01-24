@@ -17,9 +17,9 @@
     "friends": [
       3,
       4,
-      2,
       6,
-      5
+      5,
+      7
     ],
     "requests": [
       {
@@ -31,12 +31,12 @@
         "status": "accepted"
       },
       {
-        "requestId": 9,
-        "status": "rejected"
+        "requestId": 2,
+        "status": "pending"
       },
       {
         "requestId": 7,
-        "status": "declined"
+        "status": "accepted"
       }
     ]
   },
@@ -58,6 +58,16 @@
     "friends": [
       3,
       4
+    ],
+    "requests": [
+      {
+        "requestId": 1,
+        "status": "pending"
+      },
+      {
+        "requestId": 3,
+        "status": "pending"
+      }
     ]
   },
   {

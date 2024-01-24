@@ -222,5 +222,12 @@
     "receiverId": 4,
     "text": "Of course we can",
     "dateSent": "2024-01-24T03:02:15.370Z"
+  },
+  {
+    "id": 5,
+    "senderId": "1",
+    "receiverId": 6,
+    "text": "Testing this",
+    "dateSent": "2024-01-24T18:00:47.704Z"
   }
 ]

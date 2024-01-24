@@ -11,6 +11,7 @@ import UsersPage from './pages/UsersPage.vue';
 import PicturesPage from './pages/PicturesPage.vue';
 import MessagesPage from './pages/MessagesPage.vue';
 import FriendsPage from './pages/FriendsPage.vue';
+import AllPostsPage from './pages/AllPostsPage.vue';
 Vue.use(VueRouter);
 
 const routes = [
@@ -23,6 +24,7 @@ const routes = [
   { path: '/pictures', component: PicturesPage },
   { path: '/messages', component: MessagesPage },
   { path: '/friends', component: FriendsPage },
+  { path: '/allposts', component: AllPostsPage },
 ];
 
 const router = new VueRouter({

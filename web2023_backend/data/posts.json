@@ -14,6 +14,26 @@
         "commentId": 202,
         "userId": 3,
         "text": "I love it!"
+      },
+      {
+        "commentId": 1706122534700,
+        "text": "dd",
+        "userId": "1"
+      },
+      {
+        "commentId": 1706122541222,
+        "text": "TESTING THIS",
+        "userId": "1"
+      },
+      {
+        "commentId": 1706122574133,
+        "text": "also this",
+        "userId": "2"
+      },
+      {
+        "commentId": 1706123130293,
+        "text": "yy",
+        "userId": "2"
       }
     ]
   },
@@ -70,6 +90,33 @@
     "userId": 3,
     "picture": "/images/posts/1.jpg",
     "text": "User 3's first post",
+    "comments": []
+  },
+  {
+    "postId": 1706123595153,
+    "userId": 2,
+    "picture": "",
+    "text": "dd",
+    "comments": []
+  },
+  {
+    "postId": 1706124192477,
+    "userId": 2,
+    "text": "DDD",
+    "picture": "/images/posts/1706124192464.jpg",
+    "comments": [
+      {
+        "commentId": 1706124260124,
+        "text": "ADD A COMMENT",
+        "userId": "2"
+      }
+    ]
+  },
+  {
+    "postId": 1706124209655,
+    "userId": 2,
+    "text": "ANOTHER",
+    "picture": "/images/posts/1706124209639.jpg",
     "comments": []
   }
 ]

@@ -53,7 +53,7 @@ export default {
             localStorage.setItem('userType', userType);
             localStorage.setItem('userId',user.id);
             localStorage.setItem('image',user.profilePicture);
-            this.$router.push('/posts');
+            this.$router.push('/allposts');
             this.$root.$emit('userLoggedIn', { isLogged: true, userType: user.userType });
           } else {
             console.error('Login failed:', message);
