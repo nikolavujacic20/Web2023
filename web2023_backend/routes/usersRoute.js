@@ -91,23 +91,23 @@ router.post("/accept-request", (req, res) => {
   const { userId, requestId } = req.body;
   const usersData = JSON.parse(fs.readFileSync("data/users.json", "utf-8"));
 
-  // Find the user and the friend
+ 
   const user = usersData.find(u => u.id === parseInt(userId));
   const friend = usersData.find(u => u.id === parseInt(requestId));
 
   if (user && friend) {
-    // Add friend to user's friends list if not already there
+   
     if (!user.friends.includes(requestId)) {
       user.friends.push(requestId);
     }
 
-    // Update the request status
+
     const requestIndex = user.requests.findIndex(req => req.requestId === requestId);
     if (requestIndex !== -1) {
       user.requests[requestIndex].status = 'accepted';
     }
 
-    // Save the updated data
+
     fs.writeFileSync("data/users.json", JSON.stringify(usersData, null, 2), 'utf-8');
     res.json({ success: true, message: "Friend request accepted", friend });
   } else {
@@ -116,7 +116,7 @@ router.post("/accept-request", (req, res) => {
 });
 
 
-// Decline a friend request
+
 router.post("/decline-request", (req, res) => {
   const { userId, requestId } = req.body;
   const usersData = JSON.parse(fs.readFileSync("data/users.json", "utf-8"));
@@ -124,13 +124,13 @@ router.post("/decline-request", (req, res) => {
   const user = usersData.find(u => u.id === parseInt(userId));
 
   if (user) {
-    // Update the request status
+    
     const requestIndex = user.requests.findIndex(req => req.requestId === requestId);
     if (requestIndex !== -1) {
       user.requests[requestIndex].status = 'declined';
     }
 
-    // Save the updated data
+ 
     fs.writeFileSync("data/users.json", JSON.stringify(usersData, null, 2), 'utf-8');
     res.json({ success: true, message: "Friend request declined" });
   } else {
@@ -140,32 +140,32 @@ router.post("/decline-request", (req, res) => {
 
 
 
-// POST route to send a friend request
+
 router.post("/send-request", (req, res) => {
-  const { userId, friendId } = req.body; // `userId` is the sender, `friendId` is the receiver
+  const { userId, friendId } = req.body;
   const usersData = JSON.parse(fs.readFileSync("data/users.json", "utf-8"));
 
   const user = usersData.find(u => u.id === parseInt(friendId));
 
   if (user) {
-    // Check if the request already exists
+  
     const existingRequest = user.requests.find(req => req.requesterId === userId);
     if (!existingRequest) {
-      // Add new request
+     
       user.requests.push({
         requestId: parseInt(userId),
-        status: 'pending' // Status is 'pending' initially
+        status: 'pending' 
       });
 
-      // Save the updated data
+    
       fs.writeFileSync("data/users.json", JSON.stringify(usersData, null, 2), 'utf-8');
       res.json({ success: true, message: "Friend request sent successfully" });
     } else {
-      // Request already exists
+     
       res.json({ success: false, message: "Friend request already exists" });
     }
   } else {
-    // User not found
+ 
     res.status(404).json({ success: false, message: "User not found" });
   }
 });
