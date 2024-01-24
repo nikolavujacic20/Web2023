@@ -8,6 +8,11 @@
         <p v-if="errors.username">{{ errors.username }}</p>
       </div>
       <div class="form-group">
+        <label>Email:</label>
+        <input type="email" v-model="email" placeholder="Email" />
+        <p v-if="errors.email">{{ errors.email }}</p>
+      </div>
+      <div class="form-group">
         <label>First name:</label>
         <input v-model="firstName" placeholder="First name" />
         <p v-if="errors.firstName">{{ errors.firstName }}</p>
@@ -37,6 +42,12 @@
       <button type="submit" class="btn-register">Register</button>
     </form>
     <p v-if="registrationError" class="error-message">{{ registrationError }}</p>
+    <div v-if="showModal" class="modal">
+      <div class="modal-content">
+        <p>Registration successful!</p>
+        <button @click="closeModal">OK</button>
+      </div>
+    </div>
   </div>
 </template>
   
@@ -53,16 +64,21 @@ export default {
       confirmPassword: '',
       errors: {},
       registrationError: null,
+      email: '',
+      showModal: false,
     };
   },
   methods: {
     async register() {
-   
+
       this.errors = {};
       this.registrationError = null;
 
       if (!this.username.trim()) {
         this.errors.username = 'Username is required';
+      }
+      if (!this.email.trim()) {
+        this.errors.email = 'Email is required';
       }
       if (!this.firstName.trim()) {
         this.errors.firstName = 'First name is required';
@@ -77,7 +93,7 @@ export default {
         this.errors.confirmPassword = 'Confirm password is required';
       }
 
-  
+
       if (this.password !== this.confirmPassword) {
         this.errors.confirmPassword = 'Passwords do not match';
       }
@@ -86,7 +102,7 @@ export default {
         return;
       }
 
-   
+
       try {
         const response = await axios.post('http://localhost:3000/api/register', {
           username: this.username,
@@ -94,22 +110,26 @@ export default {
           lastName: this.lastName,
           gender: this.gender,
           password: this.password,
+          email: this.email
         });
-
+        this.showModal = true;
         console.log(response.data);
-      
+
       } catch (error) {
         console.error(error.response.data);
-     
+
         this.registrationError = 'Registration failed. The username is already taken. Please try again.';
       }
+    },
+    closeModal() {
+      this.showModal = false;
+      this.$router.push('/login');
     },
   },
 };
 </script>
   
 <style scoped>
-
 .register-page {
   max-width: 400px;
   margin: 0 auto;
@@ -188,5 +208,48 @@ button.btn-register:hover {
   margin-top: 10px;
   font-weight: bold;
   font-size: 16px;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure modal is above other content */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 40%; /* Relative width */
+  max-width: 500px; /* Maximum width */
+}
+
+.modal-content p {
+  font-size: 20px; /* Larger font size */
+  color: #1c1e21; /* Facebook's primary text color */
+  margin-bottom: 20px;
+}
+
+.modal-content button {
+  background-color: #1877f2; /* Facebook's button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.modal-content button:hover {
+  background-color: #1654ba; /* Darker blue on hover */
 }
 </style>

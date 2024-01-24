@@ -72,15 +72,14 @@ router.get("/friend-requests/:userId", (req, res) => {
   if (user && user.requests) {
     
       const pendingRequests = user.requests.filter(request => request.status === "pending");
-      console.log(pendingRequests+"OVO SU PENDING");
+  
 
     
       const requests = pendingRequests.map(request => {
           return usersData.find(u => u.id === request.requestId);
       });
 
-      console.log(requests);
-      console.log("IZNAD SU USERI KOJI SU PENDING");
+    
       res.json({ success: true, requests });
   } else {
       res.status(404).json({ success: false, message: "User or requests not found" });

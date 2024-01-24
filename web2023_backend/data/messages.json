@@ -243,5 +243,12 @@
     "receiverId": 3,
     "text": "Hello",
     "dateSent": "2024-01-24T19:47:52.384Z"
+  },
+  {
+    "id": 1,
+    "senderId": "10",
+    "receiverId": 1,
+    "text": "hello",
+    "dateSent": "2024-01-24T21:53:36.318Z"
   }
 ]
