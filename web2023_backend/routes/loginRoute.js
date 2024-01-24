@@ -8,10 +8,7 @@ router.use(bodyParser.json());
 
 
 
-const users = [
-  { id: 1, username: 'user1@1', password: 'pass1' },
-  { id: 2, username: 'user2', password: 'pass2' },
-];
+
 
 router.post('/login', (req, res) => {
   const usersData = JSON.parse(fs.readFileSync('data/users.json', 'utf-8'));

@@ -229,5 +229,19 @@
     "receiverId": 6,
     "text": "Testing this",
     "dateSent": "2024-01-24T18:00:47.704Z"
+  },
+  {
+    "id": 4,
+    "senderId": "2",
+    "receiverId": 4,
+    "text": "Lets do it ",
+    "dateSent": "2024-01-24T19:46:04.348Z"
+  },
+  {
+    "id": 2,
+    "senderId": "1",
+    "receiverId": 3,
+    "text": "Hello",
+    "dateSent": "2024-01-24T19:47:52.384Z"
   }
 ]

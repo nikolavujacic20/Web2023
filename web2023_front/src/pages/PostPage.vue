@@ -97,70 +97,78 @@ export default {
 
 <style scoped>
 .post-page {
-  max-width: 600px; /* Reduced width for a more compact look */
+  max-width: 520px; /* Adjusted width for consistency */
   margin: 20px auto;
   padding: 10px;
   background-color: #f5f6f7; /* Facebook's background color */
 }
 
 .post {
-  border: 1px solid #ddd;
-  margin-bottom: 20px;
-  padding: 15px;
+  background-color: #fff;
+  padding: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff; /* White background for posts */
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
 }
 
 .post-image {
   max-width: 100%;
   height: auto;
-  border-radius: 5px; /* Rounded corners for images */
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 .comment-section {
   margin-top: 10px;
-  background-color: #e9ebee; /* Lighter background for comment section */
-  border-radius: 5px;
-  padding: 10px;
+  background-color: #f0f2f5; /* Lighter background color for comments */
+  border-radius: 15px;
+  padding: 5px; /* Reduced padding for comment section */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .comment {
-  margin-top: 10px;
-  padding: 5px;
-  border: 1px solid #eee;
-  background-color: white;
-  border-radius: 4px; /* Rounded corners for comments */
+  background-color: #fff;
+  padding: 2px 5px; /* Reduced padding for individual comments */
+  border-radius: 15px; /* More rounded corners */
+  margin-bottom: 5px; /* Reduced margin between comments */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
 
 .comment-text {
-  font-size: 14px;
+  flex-grow: 1;
+  font-size: 12px; /* Smaller font size for comments */
   color: #1c1e21; /* Facebook's primary text color */
+  margin-right: 5px;
+  text-align: left;
 }
 
 .comment-username {
   font-size: 12px;
   color: #606770; /* Facebook's secondary text color */
+  font-weight: bold; /* Bold usernames */
 }
 
 .new-comment-input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #ccd0d5; /* Facebook's border color */
-  border-radius: 3px;
-  font-size: 14px;
-  margin-top: 10px;
+  padding: 4px;
+  border: 1px solid #ccd0d5;
+  border-radius: 4px;
+  font-size: 12px; /* Smaller font size for input */
+  margin-top: 5px;
 }
 
 .add-comment-btn {
   background-color: #1877f2; /* Facebook's button color */
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 4px 8px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .add-comment-btn:hover {
